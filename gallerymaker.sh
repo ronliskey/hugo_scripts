@@ -1,5 +1,11 @@
 #!/bin/sh
 
+
+HUGO_ROOT="/Volumes/Data/Users/ron/Sites/test_hugo/ronliskey_new"
+GALLERY_DIR="/img/gallery"
+GALLERY_SECTION="gallery"
+GALLERY_NAME="new-gallery"
+
 function usage()
 {
   echo "Usage: `basename $0` options (-d output_dir) (-t -thumbname) -h for help"

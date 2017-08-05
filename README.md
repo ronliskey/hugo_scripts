@@ -27,4 +27,4 @@ Creates a directory of optimized images and thumbnail files for use in Hugo Easy
 
 ### Usage
 
-     $ gallerymaker.sh [**-g** <my-new-gallery>] [**-t** <-thumb>]
+     $ gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>]

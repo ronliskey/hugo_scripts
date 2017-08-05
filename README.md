@@ -19,11 +19,11 @@ Creates a directory of optimized images and thumbnail files for use in Hugo Easy
 1. Install ImageMagick: https://www.imagemagick.org/script/download.php
 1. Install **gallerymaker.sh**, and make it executable.
 1. Set default values in **gallerymaker.sh**.
-  1. HUGO_ROOT="/path/to/your/hugo/installation/" # The path to your local Hugo installation.
-  1. GALLERY_ROOT="/static/img/gallery" # The directory in which all your galleries are stored.
-  1. GALLERY_SECTION="gallery" # The Hugo Section configured to display image galleries.
-  1. IMAGE_WIDTH=1200
-  1. THUMB_WIDTH=300
+    * **HUGO_ROOT**="/path/to/your/hugo/installation/"
+    * **GALLERY_ROOT**="/static/img/gallery" # The directory in which all your galleries are stored.
+    * **GALLERY_SECTION**="gallery" # The Hugo Section configured to display image galleries.
+    * **IMAGE_WIDTH**=1200
+    * **THUMB_WIDTH**=300
 
 ### usage
 

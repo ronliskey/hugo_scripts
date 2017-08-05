@@ -4,7 +4,7 @@ Various scripts for optimizing work with Hugo Static Site Generator.
 
 ## gallerymaker.sh
 
-of optimized image and thumbnail files for use in Hugo Easy Gallery.
+Creates a directory of optimized images  and thumbnail files for use in Hugo Easy Gallery.
 
 1. Creates a new drectory for the resulting gallery images. (Will not overwrite existing directories).
 1. Creates reasonably sized images (defaut: 1200px wide)

@@ -27,4 +27,10 @@ Creates a directory of optimized images and thumbnail files for use in Hugo Easy
 
 ### Usage
 
-     $ gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>]
+1. Create a directory of images for use in your new gallery.
+2. In the terminal, cd into this directory.
+1. Run **gallerymaker.sh**, such as:
+
+     $ gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>] # If in your path
+     $ ./ gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>] # If in the current directory
+     $ ~/bin/gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>] # If in bin

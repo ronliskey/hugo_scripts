@@ -13,3 +13,13 @@ Creates a directory of optimized images  and thumbnail files for use in Hugo Eas
 1. Attempts to wipe clean the OSX 'quarentine' bit.
 1. Adds an 'index.html' file to the new gallery directory to block index viewing.
 1. Calls the Hugo 'new' command to create a '<YOUR_NEW_GALLERY>.md' file.
+
+### Installaion
+
+1. Install ImageMagick: https://www.imagemagick.org/script/download.php
+1. Install gallerymaker.sh, and make it executable.
+1. Set defaul values in gallerymaker.sh, such as the path to your Hugo installation.
+
+### usage
+
+     $ gallerymaker.sh [-g <my-new-gallery>] [-t <-thumb>]

@@ -100,8 +100,8 @@ touch ${OUTPUT_DIR}/index.html
 chmod go+r ${OUTPUT_DIR}/*.*
 
 # Remove quarentine atribute if present. (OSX only)
-find ${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY} -iname '*${THUMB_NAME}.jpg' -print0 | xargs -0 xattr -dr com.apple.quarantine
-find ${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY} -iname '*${THUMB_NAME}.png' -print0 | xargs -0 xattr -dr com.apple.quarantine
+find ${OUTPUT_DIR} -iname '*${THUMB_NAME}.jpg' -print0 | xargs -0 xattr -dr com.apple.quarantine
+find ${OUTPUT_DIR} -iname '*${THUMB_NAME}.png' -print0 | xargs -0 xattr -dr com.apple.quarantine
 
 clear
 ls -l ${OUTPUT_DIR}

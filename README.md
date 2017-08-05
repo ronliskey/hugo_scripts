@@ -21,10 +21,10 @@ Creates a directory of optimized images and thumbnail files for use in Hugo Easy
 1. Set default values in **gallerymaker.sh**.
     * **HUGO_ROOT**="/path/to/your/hugo/installation/"
     * **GALLERY_ROOT**="/static/img/gallery" # The directory in which all your galleries are stored.
-    * **GALLERY_SECTION**="gallery" # The Hugo Section configured to display image galleries.
+    * **GALLERY_SECTION**="gallery" # The [Hugo Section](https://gohugo.io/content-management/sections/) used to display galleries.
     * **IMAGE_WIDTH**=1200
     * **THUMB_WIDTH**=300
 
-### usage
+### Usage
 
      $ gallerymaker.sh [**-g** <my-new-gallery>] [**-t** <-thumb>]

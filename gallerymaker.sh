@@ -1,10 +1,27 @@
 #!/bin/sh
 
-
+# Defaults
 HUGO_ROOT="/Volumes/Data/Users/ron/Sites/test_hugo/ronliskey_new"
-GALLERY_DIR="/img/gallery"
+GALLERY_ROOT="/static/img/gallery"
 GALLERY_SECTION="gallery"
-GALLERY_NAME="new-gallery"
+IMAGE_WIDTH=1200
+THUMB_WIDTH=300
+
+# Defaults that can be overwritten by command line.
+THUMB_NAME="-thumb"
+GALLERY="new-gallery"
+
+function cd_hugo_root () {
+  cd ${HUGO_ROOT}
+}
+
+function cd_gallery_root () {
+  cd ${HUGO_ROOT}${GALLERY_ROOT}
+}
+
+function cd_gallery () {
+  cd ${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY}
+}
 
 function usage()
 {
@@ -18,16 +35,16 @@ function dir_error()
     usage
 }
 
-IMAGE_WIDTH=1200
-THUMB_WIDTH=300
-THUMB_NAME="-thumb"
-OUTPUT_DIR="gallery_files"
+pause(){
+ read -n1 -rsp $'Press any key to continue or Ctrl+C to exit...\n'
+}
 
-while getopts d:t:h? option
+
+while getopts g:t:h? option
 do
   case "${option}"
   in
-  d) OUTPUT_DIR=${OPTARG};;
+  g) GALLERY=${OPTARG};;
   t) THUMB_NAME=${OPTARG};;
   h|?) usage;;
   esac
@@ -46,20 +63,22 @@ do
 	if [[ -f "${pic}" ]]
 	then
 	    mv "${pic}" "${pic%.PNG}.png"
-	fi  
+	fi
 done
+
+OUTPUT_DIR=${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY}
 
 # Abort if directory already exists.
 if [ -d "${OUTPUT_DIR}" ]; then
     dir_error
 fi
 
-mkdir -p ${OUTPUT_DIR}
+mkdir ${OUTPUT_DIR}
 
 # Create resized image files.
 for pic in *.jpg
 do
-	convert ${pic} -resize ${IMAGE_WIDTH}  ${OUTPUT_DIR}/${pic}
+	convert ${pic} -resize ${IMAGE_WIDTH} ${OUTPUT_DIR}/${pic}
 done
 
 # Create thumbnail files.
@@ -74,18 +93,18 @@ do
 	convert ${pic} -resize ${THUMB_WIDTH} $pic
 done
 
-cd $OUTPUT_DIR
-
 # Add index file to block directory view.
-touch index.html
+touch ${OUTPUT_DIR}/index.html
 
 # Ensure all files have correct read permissions.
-chmod go+r *.*
+chmod go+r ${OUTPUT_DIR}/*.*
 
 # Remove quarentine atribute if present. (OSX only)
-find . -iname '*${THUMB_NAME}.jpg' -print0 | xargs -0 xattr -dr com.apple.quarantine
-find . -iname '*${THUMB_NAME}.png' -print0 | xargs -0 xattr -dr com.apple.quarantine
+find ${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY} -iname '*${THUMB_NAME}.jpg' -print0 | xargs -0 xattr -dr com.apple.quarantine
+find ${HUGO_ROOT}${GALLERY_ROOT}/${GALLERY} -iname '*${THUMB_NAME}.png' -print0 | xargs -0 xattr -dr com.apple.quarantine
 
 clear
-pwd
-ls -l
+ls -l ${OUTPUT_DIR}
+
+cd_hugo_root
+hugo new gallery/${GALLERY}.md
